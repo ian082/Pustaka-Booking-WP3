@@ -1,0 +1,249 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.beranda {
+    top: 0;
+    height: 100%;
+    background-image: url(https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=628&q=80);
+    background-size: cover;
+    background-attachment: fixed;
+    padding-bottom: 90px;
+    border-bottom: solid 3px midnightblue;
+    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.3);
+}
+
+li {
+    list-style: none;
+    padding-top: 16px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+}
+
+
+.navbar {
+    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.3);
+    border-bottom: solid 2px white;
+    background-color: midnightblue;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .logo a {
+    font-size: 1.2rem;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: scale 0.2 ease
+}
+
+.navbar .logo:hover {
+    scale: 1.1;
+}
+
+.navbar .links {
+    display: flex;
+    gap: 2rem;
+}
+
+.link {
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: scale 0.2 ease
+}
+
+.link:hover {
+    scale: 1.1;
+}
+
+.navbar .toggle_btn {
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+    color: white;
+}
+
+.action_btn {
+    padding: 0.5rem 1rem;
+    border: solid 2px white;
+    outline: none;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: scale 0.2 ease;
+}
+
+.action_btn:hover {
+    scale: 1.1;
+    color: white;
+}
+
+.action_btn:active {
+    scale: 1;
+}
+
+.dropdown_menu {
+    display: none;
+    position: absolute;
+    right: 2rem;
+    top: 55px;
+    height: 0;
+    width: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dropdown_menu.open {
+    height: 210px;
+}
+
+.dropdown_menu li {
+    padding: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown_menu .action_btn {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    background-color: midnightblue;
+}
+
+.tombol {
+    padding-top: 5px;
+}
+
+.tombol {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 50px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tombol a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    padding: 10px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    overflow: hidden;
+    color: black;
+    font-weight: 400px;
+    z-index: 1;
+    transition: 0.5s;
+    backdrop-filter: blur(15px);
+}
+
+.tombol:hover a {
+    color: white;
+    letter-spacing: 3px;
+    background-color: midnightblue;
+}
+
+.tombol a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.15), transparent);
+    transform: skewX(45deg) translate(0);
+    transition: 0.5s;
+    filter: blur(0px);
+}
+
+#kontak {
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.3);
+    padding: 50px 30px;
+    margin: 50px 50px;
+    color: white;
+    border: 2px solid black;
+    border-radius: 25px;
+    background-color: midnightblue;
+}
+
+footer {
+    background: midnightblue;
+    padding: 5px 0;
+}
+
+.social1 {
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    background: rgb(0,0,0, .9);
+    margin: 10px;
+    border-radius: 10px;
+    position: relative;
+    color: rgb(220, 220, 220);
+}
+
+.social1 i {
+    transition: 0.2s linear;
+    font-size: 25px;
+    line-height: 70px;
+}
+
+.social1:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 992px) {
+    .navbar .links,
+    .navbar .action_btn {
+        display: none;
+    }
+
+    .navbar .toggle_btn {
+        display: block;
+    }
+
+    .dropdown_menu {
+        display: block;
+    }
+}
+
+@media (max-width: 578px) {
+    .dropdown_menu {
+        left: 2rem;
+        width: unset;
+    }
+}
