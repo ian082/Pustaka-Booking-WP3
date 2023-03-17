@@ -30,7 +30,7 @@ class Home extends CI_Controller
             $this->load->view('buku/daftarbuku', $data);
             $this->load->view('templates/templates-user/modal');
             $this->load->view('templates/templates-user/footer', $data);
-            //$this->load->view('templates/footer');
+            //\$this->load->view('templates/footer');
         }
     }
     public function detailBuku()
@@ -54,7 +54,7 @@ class Home extends CI_Controller
         }
         $this->load->view('templates/templates-user/detail-buku-header', $data);
         $this->load->view('buku/detail-buku', $data);
-        //$this->load->view('templates/templates-user/modal');
+        $this->load->view('templates/templates-user/modal');
         $this->load->view('templates/templates-user/detail-buku-footer');
     }
 }

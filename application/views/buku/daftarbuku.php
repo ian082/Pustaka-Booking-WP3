@@ -31,3 +31,21 @@
         </div>
     </div>
 </center>
+
+
+<br>
+<br>
+<br>
+<br>
+<section data-aos="zoom-in-up" data-aos-delay="50" data-aos-duration="1500" id="kontak">
+    <center>
+        <img class="pp" src="assets/img/profile/default.jpg" class="img-fluid" alt="" width="200" height="200">
+        <br>
+        <br>
+        <div class="social">
+            <a class="social1" href="https://web.facebook.com/profile.php?id=100008344355877" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a class="social1" href="https://www.instagram.com/im_nothing_99/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a class="social1" href="https://api.whatsapp.com/send?phone=628558359732" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </center>
+</section>

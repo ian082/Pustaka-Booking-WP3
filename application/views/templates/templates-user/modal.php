@@ -1,93 +1,81 @@
-<!-- Login Modal -->
+<style>
+    .btn {
+        background-color: midnightblue;
+    }
+
+    .btn:hover {
+        background-color: midnightblue;
+    }
+</style>
+
+<!-- login modal -->
 <div class="modal fade" tabindex="-1" id="loginModal" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Login Member</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                <button type="" class="text-white btn btn-user" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">x</span>
                 </button>
             </div>
             <form action="<?= base_url('member'); ?>" method="post">
                 <div class="modal-body">
-                    <div class="form-group row">
+                    <div class="form-group row p-2">
                         <label for="email" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
-                            <input type="text" name="email" id="email" placeholder="Alamat Email" class="form-control">
+                            <input type="text" class="form-control" id="email" name="email" placeholder="Alamat Email">
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="password" class="col-sm-2 col-form-label">Password</label>
+                    <div class="form-group row p-2">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
                         <div class="col-sm-10">
-                            <input type="password" name="password" id="password" placeholder="Password" class="form-control">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-                    <button class="btn btn-outline-primary" type="submit">Log in</button>
+                    <button type="submit" class="text-white btn btn-user">Log in</button>
+                    <a href="#" data-toggle="modal" data-target="#daftarModal" class="text-white btn btn-user">Registrasi</a>
                 </div>
             </form>
         </div>
     </div>
 </div>
-<!-- /Login Modal -->
+<!--/login modal -->
 
-<!-- Daftar Modal -->
+<!-- daftar modal -->
 <div class="modal fade" tabindex="-1" id="daftarModal" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Daftar Anggota</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                <button type="button" class="text-white btn btn-user" data-dismiss="modal" arialabel="Close">
+                    <span aria-hidden="true">x</span>
                 </button>
             </div>
             <form action="<?= base_url('member/daftar'); ?>" method="post">
                 <div class="modal-body">
-                    <div class="form-group">
-                        <input type="text" name="nama" id="nama" placeholder="Nama Lengkap" class="form-control">
+                    <div class="form-group p-2">
+                        <input type="text" class="form-control form-controluser" id="nama" name="nama" placeholder="Nama Lengkap">
                     </div>
-                    <div class="form-group">
-                        <input type="text" name="alamat" id="alamat" placeholder="Alamat Lengkap" class="form-control">
+                    <div class="form-group p-2">
+                        <input type="text" class="form-control form-controluser" id="alamat" name="alamat" placeholder="Alamat Lengkap">
                     </div>
-                    <div class="form-group">
-                        <input type="text" name="email" id="email" placeholder="Alamat Email" class="form-control">
+                    <div class="form-group p-2">
+                        <input type="text" class="form-control form-controluser" id="email" name="email" placeholder="Alamat Email">
                     </div>
-                    <div class="form-group">
-                        <input type="password" name="password1" id="password1" placeholder="Password" class="form-control">
+                    <div class="form-group p-2">
+                        <input type="password" class="form-control form-controluser" id="password1" name="password1" placeholder="Password">
                     </div>
-                    <div class="form-group">
-                        <input type="password" name="password2" id="password2" placeholder="Ulangi Password" class="form-control">
+                    <div class="form-group p-2">
+                        <input type="password" class="form-control form-controluser" id="password2" name="password2" placeholder="Ulangi Password">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-                    <button class="btn btn-outline-primary" type="submit">Simpan</button>
+                    <button type="submit" class="text-white btn btn-user">Daftar</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-<!-- /Daftar Modal -->
-
-<!-- Modal Info -->
-<div class="modal fade" tabindex="-1" id="modalInfo" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Informaso</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <span class="alert alert-message alert-success">Waktu Pengembalian Buku 1x24 Jam dari booking!!!</span>
-            </div>
-            <div class="modal-footer">
-                <a href="<?= base_url() ?>" type="button" class="btn btn-outline-info" data-dismiss="modal">OK</a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- /Modal Info -->
+<!--/end of Modal Daftar -->

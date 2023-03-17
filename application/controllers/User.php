@@ -68,14 +68,13 @@ class User extends CI_Controller
                     }
                     $gambar_baru = $this->upload->data('file_name');
                     $this->db->set('image', $gambar_baru);
-                } else { }
+                } else {
+                }
             }
             $this->db->set('nama', $nama);
             $this->db->where('email', $email);
             $this->db->update('user');
-            $this->session->set_flashdata('pesan', '<div
-   class="alert alert-success alert-message" role="alert">Profil
-   Berhasil Diubah </div>');
+            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-message" role="alert">Profil Berhasil Diubah</div>');
             redirect('user');
         }
     }

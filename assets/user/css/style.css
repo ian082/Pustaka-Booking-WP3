@@ -112,7 +112,13 @@ a {
 }
 
 .dropdown_menu.open {
-    height: 210px;
+    height: auto;
+}
+
+.dropdown_menu span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .dropdown_menu li {

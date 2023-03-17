@@ -36,21 +36,9 @@
             border-radius: 30px;
         }
 
-        @media (max-width: 992px) {
-            .navbar .toggle_btn {
-                display: none;
-            }
-
-            .navbar .action_btn {
-                display: block;
-            }
-
-            .navbar {
-                padding-top: 1rem;
-                padding-bottom: 1rem;
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
-            }
+        span {
+            color: white;
+            padding-top: 15px;
         }
     </style>
 </head>
@@ -71,10 +59,48 @@
                 <li class="link">
                     <a href="<?= base_url('home'); ?>">Kontak</a>
                 </li>
+                <?php
+                if (!empty($this->session->userdata('email'))) { ?>
+                    <li class="link">
+                        <a class="" href="<?= base_url('member/myprofil'); ?>">Profil</a>
+                    </li>
+                    <li class="link">
+                        <a class="" href="<?= base_url('member/logout'); ?>">Logout</a>
+                    </li>
+                    <span>Selamat Datang <b><?= $user; ?></b></span>
+                <?php } else { ?>
+                    <li class="link">
+                        <a href="#" data-toggle="modal" data-target="#loginModal" class="action_btn">Login | Registrasi</a>
+                    </li>
+                <?php } ?>
             </ul>
-            <a href="<?= base_url('autentifikasi'); ?>" class="action_btn">Login | Registrasi</a>
             <div class="toggle_btn">
                 <i class="fa-solid fa-bars"></i>
             </div>
         </div>
+        <div class="dropdown_menu fixed-top">
+            <li class="link">
+                <a href="<?= base_url('home'); ?>">Beranda</a>
+            </li>
+            <li class="link">
+                <a href="<?= base_url('home'); ?>">Buku</a>
+            </li>
+            <?php
+            if (!empty($this->session->userdata('email'))) { ?>
+                <li class="link">
+                    <a class="" href="<?= base_url('member/myprofil'); ?>">Profil</a>
+                </li>
+                <li class="">
+                    <a class="action_btn" href="<?= base_url('member/logout'); ?>">Logout</a>
+                </li>
+            <?php } else { ?>
+                <li class="link">
+                    <a href="<?= base_url('home'); ?>">Kontak</a>
+                </li>
+                <li class="">
+                    <a href="#" data-toggle="modal" data-target="#loginModal" class="action_btn">Login | Registrasi</a>
+                </li>
+            <?php } ?>
+        </div>
+
     </header>
