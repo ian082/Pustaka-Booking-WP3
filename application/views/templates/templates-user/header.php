@@ -92,7 +92,7 @@
                 </li>
             <?php } else { ?>
                 <li class="link">
-                    <a href="#kontak">Kontak</a>
+                    <a href="<?= base_url('home'); ?>">Beranda</a>
                 </li>
                 <li class="">
                     <a href="#" data-toggle="modal" data-target="#loginModal" class="action_btn">Login | Registrasi</a>

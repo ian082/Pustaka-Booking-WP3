@@ -42,14 +42,15 @@
                                         ); ?>
                                     </div>
                                     <br>
+
+                                    <hr>
                                     <center>
                                         <button class="tombol" type="submit"><a>Masuk</a></button>
                                     </center>
                                 </form>
-                                <hr>
-                                <div class="text-center">
+                                <!--<div class="text-center">
                                     <a class="text-white btn btn-user btn-block" href="<?= base_url('autentifikasi/registrasi'); ?>">Daftar Member</a>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                     </div>
