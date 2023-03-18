@@ -56,7 +56,7 @@
                             ?>
                         </p>
                         <div class="text-center">
-                            <a class="text-dark btn btn-user btn-block fas fw fa-reply" onclick="window.history.go(-1)"> Kembali</a>
+                            <a class="text-white btn btn-user btn-block fas fw fa-reply" onclick="window.history.go(-1)"> Kembali</a>
                         </div>
                     </div>
                 </div>

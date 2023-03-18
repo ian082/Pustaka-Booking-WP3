@@ -3,6 +3,7 @@
         margin-left: 30%;
         margin-right: 25%;
         margin-top: 7.2%;
+        box-shadow: 0 20px 20px rgba(0, 0, 0, 0.3);
     }
 
     @media (max-width: 992px) {
@@ -17,7 +18,7 @@
 
 
 <!-- Begin Page Content -->
-<div class="container-fluid">
+<div class="container-fluid" data-aos="fade-right" data-aos-delay="50" data-aos-duration="1500">
     <div class="row">
         <div class="col-lg-6 justify-content-x">
             <?= $this->session->flashdata('pesan'); ?>

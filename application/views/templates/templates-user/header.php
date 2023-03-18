@@ -51,16 +51,13 @@
             </div>
             <ul class="links">
                 <li class="link">
-                    <a href="#beranda">Beranda</a>
-                </li>
-                <li class="link">
-                    <a href="#buku">Buku</a>
-                </li>
-                <li class="link">
-                    <a href="#kontak">Kontak</a>
+                    <a href="<?= base_url('home'); ?>">Beranda</a>
                 </li>
                 <?php
                 if (!empty($this->session->userdata('email'))) { ?>
+                    <li class="link">
+                        <a class="" href="<?= base_url('booking'); ?>">Booking <b><?= $this->ModelBooking->getDataWhere('temp', ['email_user' => $this->session->userdata('email')])->num_rows(); ?></b> Buku</a>
+                    </li>
                     <li class="link">
                         <a class="" href="<?= base_url('member/myprofil'); ?>">Profil</a>
                     </li>
@@ -79,14 +76,14 @@
             </div>
         </div>
         <div class="dropdown_menu fixed-top">
-            <li class="link">
-                <a href="#beranda">Beranda</a>
-            </li>
-            <li class="link">
-                <a href="#buku">Buku</a>
-            </li>
             <?php
             if (!empty($this->session->userdata('email'))) { ?>
+                <li class="link">
+                    <a href="<?= base_url('home'); ?>">Beranda</a>
+                </li>
+                <li class="link">
+                    <a class="" href="<?= base_url('booking'); ?>">Booking <b><?= $this->ModelBooking->getDataWhere('temp', ['email_user' => $this->session->userdata('email')])->num_rows(); ?></b> Buku</a>
+                </li>
                 <li class="link">
                     <a class="" href="<?= base_url('member/myprofil'); ?>">Profil</a>
                 </li>

@@ -4,7 +4,7 @@ class Member extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model(['ModelBuku', 'ModelUser']);
+        $this->load->model(['ModelBuku', 'ModelUser', 'ModelBooking']);
     }
 
     public function index()
@@ -89,7 +89,6 @@ class Member extends CI_Controller
 
     public function myProfil()
     {
-        $data['judul'] = 'Profil';
         $user = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
         foreach ($user as $a) {
             $data = [
@@ -99,7 +98,7 @@ class Member extends CI_Controller
                 'tanggal_input' => $user['tanggal_input'],
             ];
         }
-        $this->load->view('templates/templates-user/detail-buku-header', $data);
+        $this->load->view('templates/templates-user/header', $data);
         $this->load->view('member/index', $data);
         $this->load->view('templates/templates-user/modal');
         $this->load->view('templates/templates-user/detail-buku-footer', $data);
@@ -119,7 +118,7 @@ class Member extends CI_Controller
 
         // Validasi Nama
         $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required|trim', [
-            'required' => 'Nama tidak boleh kosong'
+            'required' => 'Nama Tidak Boleh Kosong'
         ]);
 
         //Cek jika validasi gagal dan default

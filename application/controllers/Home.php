@@ -4,7 +4,7 @@ class Home extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model(['ModelBuku', 'ModelUser']);
+        $this->load->model(['ModelBuku', 'ModelUser', 'ModelBooking']);
     }
     public function index()
     {
@@ -37,7 +37,6 @@ class Home extends CI_Controller
     {
         $id = $this->uri->segment(3);
         $buku = $this->ModelBuku->joinKategoriBuku(['buku.id' => $id])->result();
-        $data['user'] = "Pengunjung";
         $data['title'] = "Detail Buku";
         foreach ($buku as $fields) {
             $data['judul'] = $fields->judul_buku;
@@ -51,10 +50,24 @@ class Home extends CI_Controller
             $data['dibooking'] = $fields->dibooking;
             $data['stok'] = $fields->stok;
             $data['id'] = $id;
+        };
+
+        //jika sudah login dan jika belum login
+        if ($this->session->userdata('email')) {
+            $user = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
+            $data['user'] = $user['nama'];
+            $this->load->view('templates/templates-user/header', $data);
+            $this->load->view('buku/detail-buku', $data);
+            $this->load->view('templates/templates-user/modal');
+            $this->load->view('templates/templates-user/detail-buku-footer', $data);
+            //$this->load->view('templates/footer');
+        } else {
+            $data['user'] = 'Pengunjung';
+            $this->load->view('templates/templates-user/header', $data);
+            $this->load->view('buku/detail-buku', $data);
+            $this->load->view('templates/templates-user/modal');
+            $this->load->view('templates/templates-user/detail-buku-footer', $data);
+            //\$this->load->view('templates/footer');
         }
-        $this->load->view('templates/templates-user/detail-buku-header', $data);
-        $this->load->view('buku/detail-buku', $data);
-        $this->load->view('templates/templates-user/modal');
-        $this->load->view('templates/templates-user/detail-buku-footer');
     }
 }

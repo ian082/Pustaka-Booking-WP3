@@ -1,9 +1,10 @@
 <style>
     .card {
-        margin-top: 29px;
+        margin-top: 45px;
         margin-left: 30px;
         margin-right: 30px;
         padding-top: 10px;
+        box-shadow: 0 20px 20px rgba(0, 0, 0, 0.3);
     }
 
     @media (max-width: 992px) {
@@ -22,12 +23,12 @@
 </style>
 
 <!-- Begin Page Content -->
-<div class="container-fluid">
+<div class="container mb-5" data-aos="fade-left" data-aos-delay="50" data-aos-duration="1500">
     <div class="row card">
         <div class="col-lg-9">
             <?= form_open_multipart('member/ubahprofil'); ?>
             <div class="form-group row">
-                <label for="email" class="pt-3 col-sm-2 col-form-label">Email</label>
+                <label for="email" class="pt-3 col-sm-2 col-form-label"> Email</label>
                 <div class="col-sm-10">
                     <input type="text" class="mt-2 form-control" id="email" name="email" value="<?= $email; ?>" readonly>
                 </div>
@@ -65,7 +66,6 @@
     </div>
 </div>
 <!-- /.container-fluid -->
-<br>
 <br>
 <br>
 <br>
