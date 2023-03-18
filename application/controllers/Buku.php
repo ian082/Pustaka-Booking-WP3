@@ -58,35 +58,39 @@ class Buku extends CI_Controller
 
         $this->load->library('upload', $config);
 
-        if ($this->form_validation->run() == false) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/topbar', $data);
-            $this->load->view('buku/index', $data);
-            $this->load->view('templates/footer');
-        } else {
-            if ($this->upload->do_upload('image')) {
-                $image = $this->upload->data();
-                $gambar = $image['file_name'];
+        if ($this->session->userdata('role_id') == '1') {
+            if ($this->form_validation->run() == false) {
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/sidebar', $data);
+                $this->load->view('templates/topbar', $data);
+                $this->load->view('buku/index', $data);
+                $this->load->view('templates/footer');
             } else {
-                $gambar = '';
+                if ($this->upload->do_upload('image')) {
+                    $image = $this->upload->data();
+                    $gambar = $image['file_name'];
+                } else {
+                    $gambar = '';
+                }
+
+                $data = [
+                    'judul_buku' => $this->input->post('judul_buku', true),
+                    'id_kategori' => $this->input->post('id_kategori', true),
+                    'pengarang' => $this->input->post('pengarang', true),
+                    'penerbit' => $this->input->post('penerbit', true),
+                    'tahun_terbit' => $this->input->post('tahun', true),
+                    'isbn' => $this->input->post('isbn', true),
+                    'stok' => $this->input->post('stok', true),
+                    'dipinjam' => 0,
+                    'dibooking' => 0,
+                    'image' => $gambar
+                ];
+
+                $this->ModelBuku->simpanBuku($data);
+                redirect('buku');
             }
-
-            $data = [
-                'judul_buku' => $this->input->post('judul_buku', true),
-                'id_kategori' => $this->input->post('id_kategori', true),
-                'pengarang' => $this->input->post('pengarang', true),
-                'penerbit' => $this->input->post('penerbit', true),
-                'tahun_terbit' => $this->input->post('tahun', true),
-                'isbn' => $this->input->post('isbn', true),
-                'stok' => $this->input->post('stok', true),
-                'dipinjam' => 0,
-                'dibooking' => 0,
-                'image' => $gambar
-            ];
-
-            $this->ModelBuku->simpanBuku($data);
-            redirect('buku');
+        } else {
+            redirect('autentifikasi/blok');
         }
     }
 
@@ -150,35 +154,38 @@ class Buku extends CI_Controller
 
         //memuat atau memanggil library upload
         $this->load->library('upload', $config);
-
-        if ($this->form_validation->run() == false) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/topbar', $data);
-            $this->load->view('buku/ubah_buku', $data);
-            $this->load->view('templates/footer');
-        } else {
-            if ($this->upload->do_upload('image')) {
-                $image = $this->upload->data();
-                unlink('assets/img/upload/' . $this->input->post('old_pict', TRUE));
-                $gambar = $image['file_name'];
+        if ($this->session->userdata('role_id') == '1') {
+            if ($this->form_validation->run() == false) {
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/sidebar', $data);
+                $this->load->view('templates/topbar', $data);
+                $this->load->view('buku/ubah_buku', $data);
+                $this->load->view('templates/footer');
             } else {
-                $gambar = $this->input->post('old_pict', TRUE);
+                if ($this->upload->do_upload('image')) {
+                    $image = $this->upload->data();
+                    unlink('assets/img/upload/' . $this->input->post('old_pict', TRUE));
+                    $gambar = $image['file_name'];
+                } else {
+                    $gambar = $this->input->post('old_pict', TRUE);
+                }
+
+                $data = [
+                    'judul_buku' => $this->input->post('judul_buku', true),
+                    'id_kategori' => $this->input->post('id_kategori', true),
+                    'pengarang' => $this->input->post('pengarang', true),
+                    'penerbit' => $this->input->post('penerbit', true),
+                    'tahun_terbit' => $this->input->post('tahun', true),
+                    'isbn' => $this->input->post('isbn', true),
+                    'stok' => $this->input->post('stok', true),
+                    'image' => $gambar
+                ];
+
+                $this->ModelBuku->updateBuku($data, ['id' => $this->input->post('id')]);
+                redirect('buku');
             }
-
-            $data = [
-                'judul_buku' => $this->input->post('judul_buku', true),
-                'id_kategori' => $this->input->post('id_kategori', true),
-                'pengarang' => $this->input->post('pengarang', true),
-                'penerbit' => $this->input->post('penerbit', true),
-                'tahun_terbit' => $this->input->post('tahun', true),
-                'isbn' => $this->input->post('isbn', true),
-                'stok' => $this->input->post('stok', true),
-                'image' => $gambar
-            ];
-
-            $this->ModelBuku->updateBuku($data, ['id' => $this->input->post('id')]);
-            redirect('buku');
+        } else {
+            redirect('autentifikasi/blok');
         }
     }
 
@@ -193,19 +200,23 @@ class Buku extends CI_Controller
             'required' => 'Judul Buku harus diisi'
         ]);
 
-        if ($this->form_validation->run() == false) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/topbar', $data);
-            $this->load->view('buku/kategori', $data);
-            $this->load->view('templates/footer');
-        } else {
-            $data = [
-                'kategori' => $this->input->post('kategori', TRUE)
-            ];
+        if ($this->session->userdata('role_id') == '1') {
+            if ($this->form_validation->run() == false) {
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/sidebar', $data);
+                $this->load->view('templates/topbar', $data);
+                $this->load->view('buku/kategori', $data);
+                $this->load->view('templates/footer');
+            } else {
+                $data = [
+                    'kategori' => $this->input->post('kategori', TRUE)
+                ];
 
-            $this->ModelBuku->simpanKategori($data);
-            redirect('buku/kategori');
+                $this->ModelBuku->simpanKategori($data);
+                redirect('buku/kategori');
+            }
+        } else {
+            redirect('autentifikasi/blok');
         }
     }
 
@@ -221,20 +232,24 @@ class Buku extends CI_Controller
             'min_length' => 'Nama Kategori terlalu pendek'
         ]);
 
-        if ($this->form_validation->run() == false) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/topbar', $data);
-            $this->load->view('buku/ubah_kategori', $data);
-            $this->load->view('templates/footer');
+        if ($this->session->userdata('role_id') == '1') {
+            if ($this->form_validation->run() == false) {
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/sidebar', $data);
+                $this->load->view('templates/topbar', $data);
+                $this->load->view('buku/ubah_kategori', $data);
+                $this->load->view('templates/footer');
+            } else {
+
+                $data = [
+                    'kategori' => $this->input->post('kategori', true)
+                ];
+
+                $this->ModelBuku->updateKategori(['id' => $this->input->post('id')], $data);
+                redirect('buku/kategori');
+            }
         } else {
-
-            $data = [
-                'kategori' => $this->input->post('kategori', true)
-            ];
-
-            $this->ModelBuku->updateKategori(['id' => $this->input->post('id')], $data);
-            redirect('buku/kategori');
+            redirect('autentifikasi/blok');
         }
     }
 

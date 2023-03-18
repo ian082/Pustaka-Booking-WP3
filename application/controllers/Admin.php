@@ -13,10 +13,15 @@ class Admin extends CI_Controller
         $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
         $data['anggota'] = $this->ModelUser->getUserLimit()->result_array();
         $data['buku'] = $this->ModelBuku->getBuku()->result_array();
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/index', $data);
-        $this->load->view('templates/footer');
+
+        if ($this->session->userdata('role_id') == '1') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/index', $data);
+            $this->load->view('templates/footer');
+        } else {
+            redirect('autentifikasi/blok');
+        }
     }
 }

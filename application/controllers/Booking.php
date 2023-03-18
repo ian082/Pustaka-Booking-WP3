@@ -25,7 +25,7 @@ class Booking extends CI_Controller
         }
         $dtb = $this->ModelBooking->showtemp(['id_user' => $id_user])->num_rows();
         if ($dtb < 1) {
-            $this->session->set_flashdata('pesan', '<div class="alert alertmassege alert-danger" role="alert">Tidak Ada Buku dikeranjang</div>');
+            $this->session->set_flashdata('pesan', '<div class="alert alertmassege alert-danger" role="alert">Tidak Ada Buku Dikeranjang</div>');
             redirect(base_url());
         } else {
             $data['temp'] = $this->db->query("select image, judul_buku, penulis, penerbit, tahun_terbit,id_buku from temp where id_user='$id_user'")->result_array();
